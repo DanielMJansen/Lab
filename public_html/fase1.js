@@ -11,7 +11,7 @@
 	var tileSrcSize = 96;
 	
 	var img = new Image();
-		img.src = "fase1.png";
+		img.src = "img.png";
 		img.addEventListener("load",function(){
 			requestAnimationFrame(loop,cnv);
 		},false);
@@ -49,7 +49,7 @@
 		[1,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1],
 		[1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
 		[1,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1],
-		[1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1],
+		[1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
 		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	];
 	
@@ -74,6 +74,11 @@
 		}
 	}
 	
+        var endLevelX = player.x;
+        var endLevelY = player.y;
+        
+        
+       
 	var cam = {
 		x: 0,
 		y: 0,
@@ -144,7 +149,8 @@
 				break;
 			case RIGHT:
 				mvRight = false;
-				break;
+                                break;
+                                
 			case DOWN:
 				mvDown = false;
 				break;
@@ -240,5 +246,15 @@
 		update();
 		render();
 		requestAnimationFrame(loop,cnv);
+                checkLevel();
+                
 	}
+        
+        function checkLevel(){
+            if(player.x == 1276 && player.y == 1184){
+                alert("Parabéns, você passou de nível!");
+                window.location.replace("http://localhost:8383/Lab/labirinto2.html");
+            }
+        }
+        
 }());
